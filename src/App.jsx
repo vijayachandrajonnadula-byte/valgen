@@ -1,121 +1,99 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import {
+  Box,
+  Stack,
+  Container,
+  Typography,
+  Button,
+  Chip,
+  TextField,
+  Divider,
+  Paper,
+} from '@mui/material'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <Container maxWidth="md" sx={{ py: 6 }}>
+      <Stack spacing={5}>
+        <Box>
+          <Typography variant="overline" color="text.secondary">
+            valgen design system
+          </Typography>
+          <Typography variant="h1">Design tokens, wired up</Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
+            This MUI theme is generated from the Figma tokens synced into{' '}
+            <code>valgentokens.json</code> — palette, typography, and shape all read
+            from the token file at build time.
+          </Typography>
+        </Box>
 
-      <div className="ticks"></div>
+        <Paper variant="outlined" sx={{ p: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            Typography scale
+          </Typography>
+          <Stack spacing={1}>
+            <Typography variant="h1">H1 Heading</Typography>
+            <Typography variant="h2">H2 Heading</Typography>
+            <Typography variant="h3">H3 Heading</Typography>
+            <Typography variant="h4">H4 Heading</Typography>
+            <Typography variant="h5">H5 Heading</Typography>
+            <Typography variant="h6">H6 Heading</Typography>
+            <Typography variant="subtitle1">Subtitle 1</Typography>
+            <Typography variant="body1">
+              Body 1 — the quick brown fox jumps over the lazy dog.
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Body 2 — secondary text color from formElements.content.secondaryTextColor.
+            </Typography>
+          </Stack>
+        </Paper>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <Paper variant="outlined" sx={{ p: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            Actions
+          </Typography>
+          <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
+            <Button variant="contained" color="primary" onClick={() => setCount((c) => c + 1)}>
+              Count is {count}
+            </Button>
+            <Button variant="outlined" color="primary">
+              Primary
+            </Button>
+            <Button variant="contained" color="error">
+              Error
+            </Button>
+            <Button variant="contained" color="warning">
+              Warning
+            </Button>
+            <Button variant="contained" color="success">
+              Success
+            </Button>
+          </Stack>
+        </Paper>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        <Paper variant="outlined" sx={{ p: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            Inputs &amp; chips
+          </Typography>
+          <Stack spacing={2}>
+            <TextField label="Label" placeholder="Type something" size="small" />
+            <Stack direction="row" spacing={1}>
+              <Chip label="Primary" color="primary" />
+              <Chip label="Error" color="error" variant="outlined" />
+              <Chip label="Warning" color="warning" variant="outlined" />
+              <Chip label="Success" color="success" variant="outlined" />
+            </Stack>
+          </Stack>
+        </Paper>
+
+        <Divider />
+        <Typography variant="caption" color="text.secondary">
+          Built with React, Vite, and MUI — theme sourced from Figma via Tokens Studio.
+        </Typography>
+      </Stack>
+    </Container>
   )
 }
 
